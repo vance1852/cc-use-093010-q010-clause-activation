@@ -33,7 +33,7 @@ def utcnow() -> str:
 
 
 def connect(path: str = ":memory:") -> sqlite3.Connection:
-    db = sqlite3.connect(path)
+    db = sqlite3.connect(path, check_same_thread=False)
     db.row_factory = sqlite3.Row
     db.execute("PRAGMA foreign_keys=ON")
     db.executescript(SCHEMA)
